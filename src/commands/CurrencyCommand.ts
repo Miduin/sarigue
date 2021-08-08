@@ -13,7 +13,7 @@ export default class CurrencyCommand implements ICommand {
     const response: Response = await fetch(
       `http://${left}.rate.sx/${quantity}${right}`
     );
-    const currency: number = await response.json();
+    const currency: number = Number(await response.text());
 
     command.message.reply(`💱: ${currency.toFixed(2)}`);
   }
